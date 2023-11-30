@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: CIMPLIFY.AI API
+  version: 1.0.0
+  description: A PLATFORM FOR AI TUTOR
+paths:
+  /cimplify/v1/ai/tutor:
+    post:
+      operationId: cimplify_v1_ai_tutor_create
+      tags:
+      - cimplify
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Chat'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Chat'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Chat'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Chat'
+          description: ''
+components:
+  schemas:
+    Chat:
+      type: object
+      properties:
+        problem:
+          type: string
+          maxLength: 300
+        aoc:
+          type: string
+          maxLength: 300
+      required:
+      - aoc
+      - problem
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
