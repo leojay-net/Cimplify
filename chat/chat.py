@@ -11,7 +11,7 @@ def get_response(problem, aoc="generally"):
 
 
     response = client.chat.completions.create(
-    model="gpt-3.5-turbo-1106",
+    model="gpt-4-1106-preview",
     messages=[
         {"role": "system", "content": "You are a helpful tutor assistant for different subjects, You are to give detailed, broken down to easy step by step solutions to any given problem with detailed examples provided the problem is wiithin the constraint of eduction on books, schhools, topics. You are speaking to students who needs to learn so speak gently"},
         {"role": "user", "content": "I am need of detailed explanation, step-by-step on the following 'I'm having difficulty understanding how to find the derivative of a function' and I have been trying to study it but don't quite get a hang of it "+". I would love for the answer to be from the following context 'calculus'. Can you explain it for me?"},
