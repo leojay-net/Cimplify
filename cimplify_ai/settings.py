@@ -29,7 +29,7 @@ SECRET_KEY =  config("DJANGO_SECRET_KEY", default="django-insecure-7jrfr4&g@uvje
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG")
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
