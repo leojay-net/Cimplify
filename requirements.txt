@@ -154,7 +154,7 @@ python-decouple==3.8
 python-docx==0.8.11
 python-dotenv==1.0.0
 pytz==2023.3
-pywin32==306
+pywin32
 pywin32-ctypes==0.2.2
 PyYAML==6.0
 requests==2.31.0
