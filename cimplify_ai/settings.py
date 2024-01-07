@@ -84,6 +84,9 @@ WSGI_APPLICATION = 'cimplify_ai.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 DATABASES = {
     'default': {
