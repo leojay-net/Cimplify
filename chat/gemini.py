@@ -1,7 +1,7 @@
 import google.generativeai as genai
 from decouple import config
 
-API_KEY = config("GOOGLE_API_KEY")
+API_KEY = config("GOOGLE_API_KEY", default="AIzaSyCnMz4nOPyugJHhQu3qB8eydCzje8EDzzQ")
 genai.configure(api_key=API_KEY)
 
 
