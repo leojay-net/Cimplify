@@ -74,6 +74,7 @@ importlib-metadata==6.11.0
 importlib-resources==6.1.1
 inflection==0.5.1
 instaloader==4.10.1
+ipython==8.20.0
 jsbeautifier==1.14.8
 jsonpatch==1.33
 jsonpointer==2.4
