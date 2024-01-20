@@ -20,5 +20,5 @@ class GeminiConversationSerializer(serializers.Serializer):
 
 class GeminiChatSerializer(serializers.Serializer):
     problem = serializers.CharField(max_length=300)
-    pdf_file = serializers.FileField(validators=[FileExtensionValidator(allowed_extensions=['pdf'])], write_only=True)
-    
+    #pdf_file = serializers.FileField(validators=[FileExtensionValidator(allowed_extensions=['pdf'])], write_only=True)
+    pdf_url = serializers.URLField()

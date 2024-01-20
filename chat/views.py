@@ -7,6 +7,8 @@ from .serializers import ChatSerializer, GeminiConversationSerializer, GeminiCha
 from rest_framework.generics import GenericAPIView
 from pypdf import PdfReader
 from rest_framework.parsers import MultiPartParser, FileUploadParser, FormParser
+import requests
+from io import BytesIO
 
 class Chat(GenericAPIView):
     serializer_class = ChatSerializer
@@ -39,19 +41,24 @@ class GeminiConversation(GenericAPIView):
 
 class GeminiChat(GenericAPIView):
     serializer_class = GeminiChatSerializer
-    parser_classes = (MultiPartParser, FileUploadParser, FormParser)
+    #parser_classes = (MultiPartParser, FileUploadParser, FormParser)
 
-    def read_pdf(self, request):
-        pdf = request.FILES.get("pdf_file")
-        pdf_loader = PdfReader(pdf)
-        # pages = pdf_loader.load_and_split()
+    def read_pdf(self, url):
+        response = requests.get(url)
+        bytes_stream = BytesIO(response.content)
+        pdf_loader = PdfReader(bytes_stream)
         context = "\n\n".join(str(p.extract_text()) for p in pdf_loader.pages)
         return context
+        # pdf = request.FILES.get("pdf_file")
+        # pdf_loader = PdfReader(pdf)
+        # # pages = pdf_loader.load_and_split()
+        # context = "\n\n".join(str(p.extract_text()) for p in pdf_loader.pages)
+        # return context
 
     def post(self, request, *args, **kwargs):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid(raise_exception=True):
-            context = self.read_pdf(request=request)
+            context = self.read_pdf(url=str(serializer.data['pdf_url']))
             result = geminiChat(problem=serializer.data['problem'], context=context)
             response = serializer.data
             response["response"] = result
