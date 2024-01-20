@@ -1,5 +1,6 @@
 import google.generativeai as genai
 from decouple import config
+from .test import to_markdown
 
 API_KEY = config("GOOGLE_API_KEY", default="AIzaSyCnMz4nOPyugJHhQu3qB8eydCzje8EDzzQ")
 genai.configure(api_key=API_KEY)
@@ -37,7 +38,7 @@ def geminiConversation(problem:str, history:list):
     for message in chat.history:
         conversation.append({message.role: message.parts[0].text})
     print(chat.history)
-    return {"Response": response.text, "Chat_History": conversation}
+    return {"Response": to_markdown(response.text), "Chat_History": conversation}
 
 
 # conv = ""

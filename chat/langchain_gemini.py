@@ -9,7 +9,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI
 import time
 from decouple import config
-
+from .test import to_markdown
 
 
 API_KEY = config("GOOGLE_API_KEY", default="AIzaSyCnMz4nOPyugJHhQu3qB8eydCzje8EDzzQ")
@@ -52,6 +52,6 @@ def geminiChat(problem, context):
     #question = "Describe Operating System in details?"
     result = qa_chain({"query": problem})
     print(result["result"])
-    return result['result']
+    return to_markdown(result['result'])
 
      
