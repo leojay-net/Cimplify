@@ -17,7 +17,7 @@ API_KEY = config("GOOGLE_API_KEY", default="AIzaSyCnMz4nOPyugJHhQu3qB8eydCzje8ED
 def geminiChat(problem, context):
 
     model = ChatGoogleGenerativeAI(model="gemini-pro",google_api_key=API_KEY,
-                                temperature=0.4,convert_system_message_to_human=True)
+                                temperature=0.8,convert_system_message_to_human=True)
 
     # pdf_loader = PyPDFLoader("C:/Users/leo-joseph/Desktop/new_project/cimplify/cimplify_ai/chat/Final Version.pdf")
     # pages = pdf_loader.load_and_split()
