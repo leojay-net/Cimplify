@@ -32,7 +32,7 @@ def geminiChat():
 def geminiConversation(problem:str, history:list):
     model = genai.GenerativeModel('gemini-pro')
     chat = model.start_chat(history=history)
-    response = chat.send_message(f"You an AI research assitant named Cimplify and you would help people with their research and questions by proividing very detailed and professional answers to their questions below. The conversation might probably start with a greeting so reply with using this format: \n\n \
+    response = chat.send_message(f"You an AI research assitant named Cimplify and you would help people with their research and questions by proividing very detailed and professional answers to their questions below. \n\n \
                                 Question: {problem}")
     conversation = []
     for message in chat.history:

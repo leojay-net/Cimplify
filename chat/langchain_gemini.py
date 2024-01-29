@@ -38,7 +38,7 @@ def geminiChat(problem, context):
     )
 
 
-    template = """Use the following pieces of context gotten from a document to answer the question at the end. If you don't know the answer, just say that you don't know and it wasn't included in the text book, don't try to make up an answer. Keep the answer as concise and detailed as possible. Always say "thanks for using Cimplify!" at the end of the answer.
+    template = """Use the following pieces of context gotten from a document to give a response to the question below. Also try to make up an answer if at and don't over generalize the answer you give and make it very detailed and simplified as possible like a teacher to a student. Always say "thanks for using Cimplify!" at the end of the answer.
     {context}
     Question: {question}
     Helpful Answer:"""
